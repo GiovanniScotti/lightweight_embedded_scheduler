@@ -111,13 +111,12 @@ static void schedulerExecuteTask(task_t *selectedTask, timeUs_t currentTimeUs) {
 
 void schedulerInit(void) {
 	cycleCounterInit();
-
     queueClear();
 
-    /* ADD SYSTEM TASKS HERE */
-    queueAdd(getTask(TASK_SYSTEM));
-    queueAdd(getTask(TASK_1));
-    queueAdd(getTask(TASK_2));
+    for (uint32_t i = 0; i < TASK_COUNT; i++) {
+    	queueAdd(getTask(i));
+    }
+
     return;
 }
 
@@ -130,6 +129,7 @@ void schedulerUpdate(void) {
     uint16_t waitingTasks = 0;
 
     for (task_t *task = queueFirst(); task != NULL; task = queueNext()) {
+
 		// TODO: manage event-driven tasks.
 
 		// Time-driven tasks.
