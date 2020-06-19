@@ -1,5 +1,4 @@
 #include "task.h"
-#include "stm32h7xx_hal.h"
 
 #define TASK_PERIOD_HZ(hz) (1000000 / (hz))
 #define TASK_PERIOD_MS(ms) ((ms) * 1000)
@@ -13,20 +12,24 @@
 }
 
 
-static void taskSystem() {}
+static void taskSystem() {
+    /* ADD CODE HERE */
+}
+
 static void task1() {
-	HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_1);
+	/* ADD CODE HERE */
 }
 
 static void task2() {
-
+	/* ADD CODE HERE */
 }
 
 
+/* ADD NEW TASKS HERE */
 static task_t tasksArray[TASK_COUNT] = {
-	[TASK_SYSTEM] = DEFINE_TASK("SYSTEM", taskSystem, TASK_PERIOD_HZ(10), TASK_PRIORITY_MEDIUM),
-	[TASK_1] = DEFINE_TASK("TASK_1", task1, TASK_PERIOD_HZ(2), TASK_PRIORITY_LOW),
-	[TASK_2] = DEFINE_TASK("TASK_2", task2, TASK_PERIOD_HZ(1000), TASK_PRIORITY_LOW)
+	[TASK_SYSTEM] = DEFINE_TASK("SYSTEM", taskSystem, TASK_PERIOD_MS(1), TASK_PRIORITY_MEDIUM),
+	[TASK_1] = DEFINE_TASK("TASK_1", task1, TASK_PERIOD_HZ(500), TASK_PRIORITY_LOW),
+	[TASK_2] = DEFINE_TASK("TASK_2", task2, TASK_PERIOD_US(4000), TASK_PRIORITY_LOW)
 };
 
 

@@ -27,6 +27,7 @@ typedef enum {
 } taskPriority_e;
 
 
+/* ADD NEW TASKS HERE */
 typedef enum {
     TASK_SYSTEM = 0,
 	TASK_1      = 1,

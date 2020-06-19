@@ -1,9 +1,15 @@
+////////////////////////////////////////////////////////////////
+// PLATFORM-DEPENDENT COMPILATION UNIT
+////////////////////////////////////////////////////////////////
+
 #include "system.h"
 #include "stm32h7xx_hal.h"
 
 
+// Up time in milliseconds.
 extern __IO uint32_t uwTick;
 
+// Clock cycles per microsecond.
 static volatile uint32_t usTicks = 0;
 
 
@@ -14,7 +20,7 @@ void cycleCounterInit(void) {
 }
 
 
-// Returns system uptime in microseconds (rollover in 70 minutes).
+// Returns system uptime in microseconds (rollover in 71 minutes).
 uint32_t micros(void) {
     uint32_t ms, cycle_cnt;
     do {
